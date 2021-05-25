@@ -12,7 +12,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const firebaseAuth = firebase.auth();
+export { firebase };
+export const firebaseAuth = firebase.auth();
 const githubAuthProvider = new firebase.auth.GithubAuthProvider();
 githubAuthProvider.addScope('repo');
 
@@ -29,11 +30,6 @@ export const signInWithGithub = async () => {
 
         const user = result.user;
 
-        console.log({
-            user,
-            token,
-        });
-
         return { user, token };
     } catch (error) {
         // Handle Errors here.
@@ -43,13 +39,6 @@ export const signInWithGithub = async () => {
         const email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         const credential = error.credential;
-
-        console.log({
-            errorCode,
-            errorMessage,
-            email,
-            credential,
-        });
 
         return {
             errorCode,
