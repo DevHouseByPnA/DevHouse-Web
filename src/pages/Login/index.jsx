@@ -3,7 +3,7 @@ import { GithubLoginButton } from "../../components/GithubLoginButton";
 import { signInWithGithub } from "../../utils/firebase";
 import { API } from "utils/api";
 import { useContext } from "react";
-import { UserProfileContext } from "contexts/userProfile.context";
+import { UserProfileContext } from "../../contexts/userProfile.context";
 
 export const LoginPage = () => {
     const userProfile = useContext(UserProfileContext);

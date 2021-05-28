@@ -39,12 +39,20 @@ export const StyledMenu = styled.ul`
 export const StyledMenuItem = styled.li`
     width: 100%;
 
-    &:last-child {
-        margin-top: auto;
+    @media only screen and (max-width: ${ScreenSize.MOBILE.max}) {
+        height: 100%;
+    }
+
+    @media only screen and (min-width: ${ScreenSize.TABLET.min}) {
+        &:last-child {
+            margin-top: auto;
+        }
     }
 `;
 
 export const StyledNavLink = styled(NavLink)`
+    width: 100%;
+    height: 100%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -54,6 +62,10 @@ export const StyledNavLink = styled(NavLink)`
     gap: 0.5rem;
     transition: ${props => props.theme.transition.navigationHover};
     filter: grayscale(100%) opacity(0.7);
+
+    @media only screen and (max-width: ${ScreenSize.MOBILE.max}) {
+        padding: 0.6rem;
+    }
 
     &.profile {
         filter: grayscale(0%) opacity(1);

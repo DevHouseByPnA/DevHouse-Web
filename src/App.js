@@ -8,7 +8,9 @@ import { UnauthenticatedRoute } from "./components/UnauthenticatedRoute";
 import { signOut } from "./utils/firebase";
 import { CustomThemeContext } from "./contexts/theme.context";
 import MainNavigation from "./navigation/MainNavigation";
-import { NAV_ROUTE } from "navigation/navRoutes";
+import { NAV_ROUTE } from "./navigation/navRoutes";
+import { CustomText } from "./components/CustomText";
+import { ProfilePage } from "./pages/Profile";
 
 const App = () => {
     const auth = useContext(AuthContext);
@@ -21,7 +23,7 @@ const App = () => {
     const protectedRoutes = (
         <Switch>
             <PrivateRoute exact path={`${NAV_ROUTE.PROJECTS}`}>
-                <h1>Hello there you cool Dev!</h1>
+                <CustomText.PageTitle>Projects</CustomText.PageTitle>
                 <button
                     onClick={() => {
                         signOut();
@@ -31,13 +33,16 @@ const App = () => {
                 </button>
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.WORKSPACES}`}>
-                <h1>workspaces</h1>
+                <CustomText.PageTitle>workspaces</CustomText.PageTitle>
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.REQUESTS}`}>
-                <h1>Requests</h1>
+                <CustomText.PageTitle>Requests</CustomText.PageTitle>
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.STARRED}`}>
-                <h1>Starred</h1>
+                <CustomText.PageTitle>Starred</CustomText.PageTitle>
+            </PrivateRoute>
+            <PrivateRoute exact path={`${NAV_ROUTE.PROFILE}`}>
+                <ProfilePage />
             </PrivateRoute>
             <Redirect to={`${NAV_ROUTE.PROJECTS}`} />
         </Switch>
