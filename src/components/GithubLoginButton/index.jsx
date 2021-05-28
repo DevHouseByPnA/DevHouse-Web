@@ -1,11 +1,11 @@
-import { AiFillGithub } from 'react-icons/ai';
-import styles from './styles.module.css';
+import { AiFillGithub } from "react-icons/ai";
+import { StyledLoginButton } from "./style";
 
 export const GithubLoginButton = ({ signInHandler }) => {
     return (
-        <button className={styles['button']} onClick={signInHandler}>
-            <AiFillGithub className={styles['icon']} />
-            <span>Login with Github</span>
-        </button>
+        <StyledLoginButton onClick={signInHandler}>
+            <AiFillGithub className={"icon"} />
+            <span>Log in with Github</span>
+        </StyledLoginButton>
     );
-}
+};

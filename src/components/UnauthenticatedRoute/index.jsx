@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth.context";
 
 export const UnauthenticatedRoute = ({ children, ...rest }) => {
@@ -8,14 +8,18 @@ export const UnauthenticatedRoute = ({ children, ...rest }) => {
     return (
         <Route
             {...rest}
-            render={({ location }) => !auth.state.user ? (children) : (
-                <Redirect
-                    to={{
-                        pathname: '/',
-                        state: { from: location },
-                    }}
-                />
-            )}
+            render={({ location }) =>
+                !auth.state.user ? (
+                    children
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: "/",
+                            state: { from: location },
+                        }}
+                    />
+                )
+            }
         />
     );
-}
+};

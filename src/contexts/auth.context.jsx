@@ -1,14 +1,20 @@
-import { createContext, useCallback, useEffect, useReducer, useState } from 'react';
+import {
+    createContext,
+    useCallback,
+    useEffect,
+    useReducer,
+    useState,
+} from "react";
 // eslint-disable-next-line no-unused-vars
-import { firebase, firebaseAuth } from '../utils/firebase';
+import { firebase, firebaseAuth } from "../utils/firebase";
 
 const INITIAL_STATE = {
     user: undefined,
 };
 
 const AuthActionType = {
-    LOGIN: 'LOGIN',
-    LOGOUT: 'LOGOUT',
+    LOGIN: "LOGIN",
+    LOGOUT: "LOGOUT",
 };
 
 const authReducer = (state = INITIAL_STATE, action) => {
@@ -26,7 +32,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
         default:
             return state;
     }
-}
+};
 
 export const AuthContext = createContext({
     state: INITIAL_STATE,
@@ -40,17 +46,17 @@ const loginAction = (dispatch, userData) => {
         type: AuthActionType.LOGIN,
         payload: userData,
     });
-}
+};
 
-const logoutAction = (dispatch) => {
+const logoutAction = dispatch => {
     dispatch({
         type: AuthActionType.LOGOUT,
     });
-}
+};
 
 let refreshTokenTimer;
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
     const [state, dispatch] = useReducer(authReducer, INITIAL_STATE);
     const [loading, setLoading] = useState(true);
 
@@ -66,8 +72,8 @@ export const AuthProvider = (props) => {
         const idTokenResult = await user.getIdTokenResult(true);
 
         loginAction(dispatch, {
-            name: user.displayName || '',
-            email: user.email || '',
+            name: user.displayName || "",
+            email: user.email || "",
             token: idTokenResult.token,
         });
 
@@ -101,4 +107,4 @@ export const AuthProvider = (props) => {
             {props.children}
         </AuthContext.Provider>
     );
-}
+};

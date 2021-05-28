@@ -1,5 +1,5 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDWtLEWWIUwnDsrLg8-ZZDRcpsxyLjOkXs",
@@ -7,7 +7,7 @@ const firebaseConfig = {
     projectId: "devhouse-demo",
     storageBucket: "devhouse-demo.appspot.com",
     messagingSenderId: "488856086794",
-    appId: "1:488856086794:web:a268a80eaa2f5730c672f3"
+    appId: "1:488856086794:web:a268a80eaa2f5730c672f3",
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -15,7 +15,7 @@ firebase.initializeApp(firebaseConfig);
 export { firebase };
 export const firebaseAuth = firebase.auth();
 const githubAuthProvider = new firebase.auth.GithubAuthProvider();
-githubAuthProvider.addScope('repo');
+githubAuthProvider.addScope("repo");
 
 export const signInWithGithub = async () => {
     try {
@@ -47,7 +47,7 @@ export const signInWithGithub = async () => {
             credential,
         };
     }
-}
+};
 
 export const signOut = async () => {
     try {
@@ -55,4 +55,4 @@ export const signOut = async () => {
     } catch (error) {
         console.log(error);
     }
-}
+};
