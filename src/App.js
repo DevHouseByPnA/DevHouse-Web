@@ -8,6 +8,7 @@ import { UnauthenticatedRoute } from "./components/UnauthenticatedRoute";
 import { signOut } from "./utils/firebase";
 import { CustomThemeContext } from "./contexts/theme.context";
 import MainNavigation from "./navigation/MainNavigation";
+import { NAV_ROUTE } from "navigation/navRoutes";
 
 const App = () => {
     const auth = useContext(AuthContext);
@@ -22,10 +23,10 @@ const App = () => {
             <StyledThemeProvider theme={themeState}>
                 <MainNavigation>
                     <Switch>
-                        <UnauthenticatedRoute exact path="/login">
+                        <UnauthenticatedRoute exact path={`${NAV_ROUTE.LOGIN}`}>
                             <LoginPage />
                         </UnauthenticatedRoute>
-                        <PrivateRoute exact path="/">
+                        <PrivateRoute exact path={`${NAV_ROUTE.PROJECTS}`}>
                             <h1>Hello there you cool Dev!</h1>
                             <button
                                 onClick={() => {
@@ -35,7 +36,16 @@ const App = () => {
                                 Sign Out
                             </button>
                         </PrivateRoute>
-                        <Redirect to="/" />
+                        <PrivateRoute exact path={`${NAV_ROUTE.WORKSPACES}`}>
+                            <h1>workspaces</h1>
+                        </PrivateRoute>
+                        <PrivateRoute exact path={`${NAV_ROUTE.REQUESTS}`}>
+                            <h1>Requests</h1>
+                        </PrivateRoute>
+                        <PrivateRoute exact path={`${NAV_ROUTE.STARRED}`}>
+                            <h1>Starred</h1>
+                        </PrivateRoute>
+                        <Redirect to={`${NAV_ROUTE.PROJECTS}`} />
                     </Switch>
                 </MainNavigation>
             </StyledThemeProvider>

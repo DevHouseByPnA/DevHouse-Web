@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ScreenSize } from "utils/screenSizes";
 
 export const StyledNavbar = styled.nav`
@@ -38,7 +38,7 @@ export const StyledMenuItem = styled.li`
     width: 100%;
 `;
 
-export const StyledNavLink = styled(Link)`
+export const StyledNavLink = styled(NavLink)`
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -49,7 +49,8 @@ export const StyledNavLink = styled(Link)`
     transition: ${props => props.theme.transition.navigationHover};
     filter: grayscale(100%) opacity(0.7);
 
-    &:hover {
+    &:hover,
+    &.active {
         filter: grayscale(0%) opacity(1);
         background-color: ${props => props.theme.background};
     }
