@@ -7,6 +7,7 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import { UnauthenticatedRoute } from "./components/UnauthenticatedRoute";
 import { signOut } from "./utils/firebase";
 import { CustomThemeContext } from "./contexts/theme.context";
+import MainNavigation from "./navigation/MainNavigation";
 
 const App = () => {
     const auth = useContext(AuthContext);
@@ -19,22 +20,24 @@ const App = () => {
     return (
         <>
             <StyledThemeProvider theme={themeState}>
-                <Switch>
-                    <UnauthenticatedRoute exact path="/login">
-                        <LoginPage />
-                    </UnauthenticatedRoute>
-                    <PrivateRoute exact path="/">
-                        <h1>Hello there you cool Dev!</h1>
-                        <button
-                            onClick={() => {
-                                signOut();
-                            }}
-                        >
-                            Sign Out
-                        </button>
-                    </PrivateRoute>
-                    <Redirect to="/" />
-                </Switch>
+                <MainNavigation>
+                    <Switch>
+                        <UnauthenticatedRoute exact path="/login">
+                            <LoginPage />
+                        </UnauthenticatedRoute>
+                        <PrivateRoute exact path="/">
+                            <h1>Hello there you cool Dev!</h1>
+                            <button
+                                onClick={() => {
+                                    signOut();
+                                }}
+                            >
+                                Sign Out
+                            </button>
+                        </PrivateRoute>
+                        <Redirect to="/" />
+                    </Switch>
+                </MainNavigation>
             </StyledThemeProvider>
         </>
     );

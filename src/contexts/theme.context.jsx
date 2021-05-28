@@ -3,7 +3,7 @@ import { createContext } from "react";
 const DARK_UI_THEME = {
     background: "#121212",
     surface: "#242424",
-    primary: "#bb86fc",
+    primary: "#df49a6",
     secondary: "#03dac6",
     text: {
         primary: "#fff",
@@ -16,6 +16,14 @@ const DARK_UI_THEME = {
     },
     transition: {
         hover: "all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)",
+        navigationHover: "all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)",
+    },
+    font: {
+        family: {
+            navigation: `'Montserrat', sans-serif`,
+            screenTitle: `'Comic Neue', cursive;`,
+            text: `'Lato', sans-serif`,
+        },
     },
 };
 
