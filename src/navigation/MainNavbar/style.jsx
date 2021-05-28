@@ -23,6 +23,7 @@ export const StyledMenu = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,11 +32,16 @@ export const StyledMenu = styled.ul`
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+        width: 100%;
     }
 `;
 
 export const StyledMenuItem = styled.li`
     width: 100%;
+
+    &:last-child {
+        margin-top: auto;
+    }
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -48,6 +54,10 @@ export const StyledNavLink = styled(NavLink)`
     gap: 0.5rem;
     transition: ${props => props.theme.transition.navigationHover};
     filter: grayscale(100%) opacity(0.7);
+
+    &.profile {
+        filter: grayscale(0%) opacity(1);
+    }
 
     &:hover,
     &.active {

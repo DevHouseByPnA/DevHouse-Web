@@ -6,6 +6,7 @@ import App from "./App";
 // import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from "./contexts/auth.context";
 import { CustomThemeProvider } from "./contexts/theme.context";
+import { UserProfileProvider } from "./contexts/userProfile.context";
 
 const Main = () => {
     return (
@@ -13,7 +14,9 @@ const Main = () => {
             <Router>
                 <AuthProvider>
                     <CustomThemeProvider>
-                        <App />
+                        <UserProfileProvider>
+                            <App />
+                        </UserProfileProvider>
                     </CustomThemeProvider>
                 </AuthProvider>
             </Router>

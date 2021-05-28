@@ -26,11 +26,12 @@ export const signInWithGithub = async () => {
         const credential = result.credential;
 
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-        const token = credential.accessToken;
+        const githubToken = credential.accessToken;
 
         const user = result.user;
+        const { token: authToken } = await result.user.getIdTokenResult();
 
-        return { user, token };
+        return { user, githubToken, authToken };
     } catch (error) {
         // Handle Errors here.
         const errorCode = error.code;
