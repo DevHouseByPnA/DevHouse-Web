@@ -10,17 +10,15 @@ import { UserProfileProvider } from "./contexts/userProfile.context";
 
 const Main = () => {
     return (
-        <React.StrictMode>
-            <Router>
-                <AuthProvider>
-                    <CustomThemeProvider>
-                        <UserProfileProvider>
-                            <App />
-                        </UserProfileProvider>
-                    </CustomThemeProvider>
-                </AuthProvider>
-            </Router>
-        </React.StrictMode>
+        <Router>
+            <AuthProvider>
+                <CustomThemeProvider>
+                    <UserProfileProvider>
+                        <App />
+                    </UserProfileProvider>
+                </CustomThemeProvider>
+            </AuthProvider>
+        </Router>
     );
 };
 

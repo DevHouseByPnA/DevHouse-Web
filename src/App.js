@@ -10,6 +10,7 @@ import MainNavigation from "./navigation/MainNavigation";
 import { NAV_ROUTE } from "./navigation/navRoutes";
 import { CustomText } from "./components/CustomText";
 import { ProfilePage } from "./pages/Profile";
+import { ProjectsPage } from "./pages/Projects";
 
 const App = () => {
     const auth = useContext(AuthContext);
@@ -22,7 +23,7 @@ const App = () => {
     const protectedRoutes = (
         <Switch>
             <PrivateRoute exact path={`${NAV_ROUTE.PROJECTS}`}>
-                <CustomText.PageTitle>Projects</CustomText.PageTitle>
+                <ProjectsPage />
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.WORKSPACES}`}>
                 <CustomText.PageTitle>workspaces</CustomText.PageTitle>
