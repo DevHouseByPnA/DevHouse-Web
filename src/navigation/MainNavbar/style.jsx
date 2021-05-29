@@ -69,12 +69,22 @@ export const StyledNavLink = styled(NavLink)`
 
     &.profile {
         filter: grayscale(0%) opacity(1);
+
+        span {
+            filter: grayscale(100%) opacity(0.7);
+        }
     }
 
     &:hover,
     &.active {
         filter: grayscale(0%) opacity(1);
         background-color: ${props => props.theme.background};
+
+        &.profile {
+            span {
+                filter: grayscale(0%) opacity(1);
+            }
+        }
     }
 
     .icon {

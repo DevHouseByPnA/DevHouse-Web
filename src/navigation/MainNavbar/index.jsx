@@ -75,6 +75,7 @@ const MainNavbar = () => {
                                             src={`${userProfile.profile?.profilePicURL}`}
                                             small
                                         />
+                                        <span>{name}</span>
                                     </StyledNavLink>
                                 )}
                             {route === NAV_ROUTE.PROFILE &&

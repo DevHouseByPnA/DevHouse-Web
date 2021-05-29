@@ -16,6 +16,7 @@ export { firebase };
 export const firebaseAuth = firebase.auth();
 const githubAuthProvider = new firebase.auth.GithubAuthProvider();
 githubAuthProvider.addScope("repo");
+githubAuthProvider.addScope("read:user");
 
 export const signInWithGithub = async () => {
     try {

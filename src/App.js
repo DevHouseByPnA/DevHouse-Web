@@ -5,7 +5,6 @@ import { AuthContext } from "./contexts/auth.context";
 import { LoginPage } from "./pages/Login";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { UnauthenticatedRoute } from "./components/UnauthenticatedRoute";
-import { signOut } from "./utils/firebase";
 import { CustomThemeContext } from "./contexts/theme.context";
 import MainNavigation from "./navigation/MainNavigation";
 import { NAV_ROUTE } from "./navigation/navRoutes";
@@ -24,13 +23,6 @@ const App = () => {
         <Switch>
             <PrivateRoute exact path={`${NAV_ROUTE.PROJECTS}`}>
                 <CustomText.PageTitle>Projects</CustomText.PageTitle>
-                <button
-                    onClick={() => {
-                        signOut();
-                    }}
-                >
-                    Sign Out
-                </button>
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.WORKSPACES}`}>
                 <CustomText.PageTitle>workspaces</CustomText.PageTitle>
