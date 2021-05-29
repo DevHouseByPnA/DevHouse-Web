@@ -3,6 +3,8 @@ import {
     StyledCardTitle,
     StyledCardText,
     StyledCardTextDisabled,
+    StyledCardRow,
+    StyledCardSubTitle,
 } from "./style";
 
 export const Card = props => {
@@ -19,4 +21,12 @@ Card.Text = ({ children }) => {
 
 Card.TextDisabled = ({ children }) => (
     <StyledCardTextDisabled>{children}</StyledCardTextDisabled>
+);
+
+Card.SubTitle = ({ children }) => (
+    <StyledCardSubTitle>{children}</StyledCardSubTitle>
+);
+
+Card.Row = ({ children, flexEnd }) => (
+    <StyledCardRow flexEnd={flexEnd}>{children}</StyledCardRow>
 );

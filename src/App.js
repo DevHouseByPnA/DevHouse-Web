@@ -11,6 +11,7 @@ import { NAV_ROUTE } from "./navigation/navRoutes";
 import { CustomText } from "./components/CustomText";
 import { ProfilePage } from "./pages/Profile";
 import { ProjectsPage } from "./pages/Projects";
+import { ProjectsProvider } from "./contexts/projects.context";
 
 const App = () => {
     const auth = useContext(AuthContext);
@@ -55,7 +56,9 @@ const App = () => {
             <StyledThemeProvider theme={themeState}>
                 {!auth.state.user && unauthenticatedRoutes}
                 {auth.state.user && (
-                    <MainNavigation>{protectedRoutes}</MainNavigation>
+                    <MainNavigation>
+                        <ProjectsProvider>{protectedRoutes}</ProjectsProvider>
+                    </MainNavigation>
                 )}
             </StyledThemeProvider>
         </>

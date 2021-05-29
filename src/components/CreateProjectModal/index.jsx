@@ -7,6 +7,7 @@ import { CustomButton } from "../Button";
 import { TextFieldInput, TextAreaInput, ChipsInput } from "../Input";
 import { API } from "../../utils/api";
 import { AuthContext } from "../../contexts/auth.context";
+import { ProjectsContext } from "contexts/projects.context";
 
 export const CreateProjectModal = () => {
     const [showModal, setShowModal] = useState(false);
@@ -24,6 +25,7 @@ export const CreateProjectModal = () => {
         },
     });
     const auth = useContext(AuthContext);
+    const { setProjects } = useContext(ProjectsContext);
 
     const openModal = () => setShowModal(true);
     const closeModal = () => setShowModal(false);
@@ -48,6 +50,7 @@ export const CreateProjectModal = () => {
                 data
             );
             console.log(response);
+            setProjects(prev => [...prev, response.data.project]);
             closeModal();
         } catch (error) {
             console.log(error);

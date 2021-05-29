@@ -7,6 +7,7 @@ export const StyledCard = styled.div`
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    gap: 0.25rem;
 `;
 
 export const StyledCardTitle = styled.h3`
@@ -28,4 +29,19 @@ export const StyledCardTextDisabled = styled.p`
     margin: 0.5rem 0;
     color: ${props => props.theme.text.secondary};
     font-size: 0.9rem;
+`;
+
+export const StyledCardSubTitle = styled.p`
+    padding: 0;
+    margin: 0.5rem 0;
+    color: ${props => props.theme.text.secondary};
+    font-size: 1rem;
+`;
+
+export const StyledCardRow = styled.p`
+    width: 100%;
+    display: flex;
+    justify-content: ${props => (props.flexEnd ? "flex-end" : "flex-start")};
+    align-items: center;
+    gap: 0.5rem;
 `;
