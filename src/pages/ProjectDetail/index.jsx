@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 export const ProjectDetailPage = () => {
     const [project, setProject] = useState();
     const [loading, setLoading] = useState(false);
+    const [applying, setApplying] = useState(false);
     const params = useParams();
     const auth = useContext(AuthContext);
 
@@ -36,6 +37,31 @@ export const ProjectDetailPage = () => {
 
         fetchProject();
     }, [auth.state.user, params.id]);
+
+    const applyForProject = async () => {
+        if (!project) {
+            return;
+        }
+
+        setApplying(true);
+        try {
+            const response = await API(auth.state.user?.token).post(
+                `/requests`,
+                {
+                    projectId: project._id,
+                }
+            );
+
+            console.log(response);
+            if (/[2-3]0[0-9]/.test(response.status)) {
+                toast.success(`Request sent to mentor!`);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(`Could not apply`);
+        }
+        setApplying(false);
+    };
 
     return (
         <StyledContainer>
@@ -76,7 +102,16 @@ export const ProjectDetailPage = () => {
                             <Card.SubTitle>
                                 People Needed: {project.peopleRequired}
                             </Card.SubTitle>
-                            <CustomButton>APPLY NOW</CustomButton>
+                            {!applying && (
+                                <CustomButton onClick={applyForProject}>
+                                    APPLY NOW
+                                </CustomButton>
+                            )}
+                            {applying && (
+                                <Card.TextDisabled>
+                                    Applying...
+                                </Card.TextDisabled>
+                            )}
                         </Card>
                     </StyledContent>
                 </>

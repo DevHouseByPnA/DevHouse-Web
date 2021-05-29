@@ -38,10 +38,11 @@ export const StyledCardSubTitle = styled.p`
     font-size: 1rem;
 `;
 
-export const StyledCardRow = styled.p`
+export const StyledCardRow = styled.div`
     width: 100%;
     display: flex;
     justify-content: ${props => (props.flexEnd ? "flex-end" : "flex-start")};
     align-items: center;
     gap: 0.5rem;
+    padding: 1rem;
 `;

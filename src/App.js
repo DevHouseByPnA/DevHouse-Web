@@ -13,6 +13,7 @@ import { ProfilePage } from "./pages/Profile";
 import { ProjectsPage } from "./pages/Projects";
 import { ProjectsProvider } from "./contexts/projects.context";
 import { ProjectDetailPage } from "./pages/ProjectDetail";
+import { RequestsPage } from "./pages/Requests";
 
 const App = () => {
     const auth = useContext(AuthContext);
@@ -34,7 +35,7 @@ const App = () => {
                 <CustomText.PageTitle>workspaces</CustomText.PageTitle>
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.REQUESTS}`}>
-                <CustomText.PageTitle>Requests</CustomText.PageTitle>
+                <RequestsPage />
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.STARRED}`}>
                 <CustomText.PageTitle>Starred</CustomText.PageTitle>
