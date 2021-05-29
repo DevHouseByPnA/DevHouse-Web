@@ -6,7 +6,7 @@ export const Chips = ({ chips, onDelete }) => {
             <StyledChipsContainer>
                 {chips.map(chip => {
                     return (
-                        <StyledChip>
+                        <StyledChip key={chip}>
                             {chip}
                             {onDelete && (
                                 <button
