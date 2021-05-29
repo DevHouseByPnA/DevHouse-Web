@@ -52,7 +52,7 @@ export const StyledModalHeader = styled.header`
 
 export const StyledModalContent = styled.div`
     padding: 1rem 0.5rem;
-    max-height: 70vh;
+    max-height: 50vh;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {

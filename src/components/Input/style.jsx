@@ -18,7 +18,7 @@ export const FormControl = styled.div`
         font: inherit;
         border: 1px solid #ccc;
         background: transparent;
-        color: ${props => props.theme.text};
+        color: ${props => props.theme.text.primary};
         padding: 0.25rem;
         border-radius: 6px;
 
@@ -58,7 +58,7 @@ export const FormControl = styled.div`
         border: 1px solid #ccc;
         border-radius: 6px;
         background: transparent;
-        color: ${props => props.theme.text};
+        color: ${props => props.theme.text.primary};
         padding: 0.15rem 0.25rem;
         white-space: pre-wrap;
 
@@ -92,4 +92,13 @@ export const FormControl = styled.div`
             color: #000;
         }
     }
+`;
+
+export const StyledChipsContainer = styled.div`
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
 `;
