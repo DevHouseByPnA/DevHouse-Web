@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "./index.css";
+import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
 // import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from "./contexts/auth.context";
@@ -14,6 +16,7 @@ const Main = () => {
             <AuthProvider>
                 <CustomThemeProvider>
                     <UserProfileProvider>
+                        <ToastContainer />
                         <App />
                     </UserProfileProvider>
                 </CustomThemeProvider>

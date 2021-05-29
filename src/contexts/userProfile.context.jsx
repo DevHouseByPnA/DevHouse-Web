@@ -5,6 +5,7 @@ import {
     useEffect,
     useState,
 } from "react";
+import { toast } from "react-toastify";
 import { API } from "../utils/api";
 import { AuthContext } from "./auth.context";
 
@@ -35,6 +36,7 @@ export const UserProfileProvider = props => {
             }
         } catch (error) {
             console.log(error);
+            toast.error(`Could not fetch your profile`);
         }
     }, [auth.state.user]);
 

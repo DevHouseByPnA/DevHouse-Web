@@ -5,6 +5,7 @@ import {
     useEffect,
     useState,
 } from "react";
+import { toast } from "react-toastify";
 import { API } from "../utils/api";
 import { AuthContext } from "./auth.context";
 
@@ -32,6 +33,7 @@ export const ProjectsProvider = props => {
                 setProjects(response.data.projects);
             }
         } catch (error) {
+            toast.error(`Could not fetch projects`);
             console.log(error);
         } finally {
             setLoading(false);

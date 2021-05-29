@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import { toast } from "react-toastify";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDWtLEWWIUwnDsrLg8-ZZDRcpsxyLjOkXs",
@@ -42,6 +43,8 @@ export const signInWithGithub = async () => {
         // The firebase.auth.AuthCredential type that was used.
         const credential = error.credential;
 
+        toast.error(errorMessage);
+
         return {
             errorCode,
             errorMessage,
@@ -54,7 +57,9 @@ export const signInWithGithub = async () => {
 export const signOut = async () => {
     try {
         await firebase.auth().signOut();
+        toast.success("Signed Out!");
     } catch (error) {
         console.log(error);
+        toast.error("Could not sign out");
     }
 };

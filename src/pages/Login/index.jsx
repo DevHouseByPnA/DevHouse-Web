@@ -4,6 +4,7 @@ import { signInWithGithub } from "../../utils/firebase";
 import { API } from "utils/api";
 import { useContext } from "react";
 import { UserProfileContext } from "../../contexts/userProfile.context";
+import { toast } from "react-toastify";
 
 export const LoginPage = () => {
     const userProfile = useContext(UserProfileContext);
@@ -20,6 +21,9 @@ export const LoginPage = () => {
                 if (/20[0-9]/.test(response.status) && response.data.user) {
                     console.log(response.data);
                     userProfile.setProfile(response.data.user);
+                    toast.success(
+                        `Logged in successfully as ${response.data.user.email}`
+                    );
                 }
             } else if (errorCode && errorMessage) {
                 console.log({
@@ -30,6 +34,7 @@ export const LoginPage = () => {
             }
         } catch (error) {
             console.log(error);
+            toast.error(error.message);
         }
     };
 

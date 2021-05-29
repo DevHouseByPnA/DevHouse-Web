@@ -8,6 +8,7 @@ import { TextFieldInput, TextAreaInput, ChipsInput } from "../Input";
 import { API } from "../../utils/api";
 import { AuthContext } from "../../contexts/auth.context";
 import { ProjectsContext } from "contexts/projects.context";
+import { toast } from "react-toastify";
 
 export const CreateProjectModal = () => {
     const [showModal, setShowModal] = useState(false);
@@ -50,10 +51,14 @@ export const CreateProjectModal = () => {
                 data
             );
             console.log(response);
-            setProjects(prev => [...prev, response.data.project]);
-            closeModal();
+            if (/[2-3]0[0-9]/.test(response.status)) {
+                setProjects(prev => [...prev, response.data.project]);
+                toast.success(`Created Project ${response.data.project.name}`);
+                closeModal();
+            }
         } catch (error) {
             console.log(error);
+            toast.error(`Could not create the Project`);
         }
     };
 

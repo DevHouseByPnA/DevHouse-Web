@@ -8,6 +8,7 @@ import { Card } from "../../components/Card";
 import { Chips } from "../../components/Chips";
 import Avatar from "../../components/Avatar";
 import { CustomButton } from "../../components/Button";
+import { toast } from "react-toastify";
 
 export const ProjectDetailPage = () => {
     const [project, setProject] = useState();
@@ -29,6 +30,7 @@ export const ProjectDetailPage = () => {
                 }
             } catch (error) {
                 console.log(error);
+                toast.error(`Failed to get Project details`);
             }
         };
 
