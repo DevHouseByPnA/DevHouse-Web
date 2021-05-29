@@ -9,7 +9,7 @@ import { Card } from "../Card";
 import Avatar from "../Avatar";
 import { useContext } from "react";
 import { UserProfileContext } from "../../contexts/userProfile.context";
-import { CustomButton, CustomButtonText } from "../Button";
+import { CustomButton } from "../Button";
 import { signOut } from "../../utils/firebase";
 
 export const UserProfileCard = () => {
@@ -21,8 +21,8 @@ export const UserProfileCard = () => {
                 {userProfile.profile && (
                     <>
                         <LogoutButtonContainer>
-                            <CustomButton onClick={signOut}>
-                                <CustomButtonText>SIGN OUT</CustomButtonText>
+                            <CustomButton danger onClick={signOut}>
+                                SIGN OUT
                             </CustomButton>
                         </LogoutButtonContainer>
                         <Avatar

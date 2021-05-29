@@ -1,22 +1,21 @@
-import styled from "styled-components";
+import React from "react";
+import { StyledButton } from "./style";
 
-export const CustomButton = styled.button`
-    background-color: ${props => props.theme.secondary};
-    border: none;
-    outline: none;
-    box-shadow: ${props => props.theme.shadow.button};
-    transition: ${props => props.theme.transition.hover};
-    border-radius: 6px;
-    padding: 0.5rem 0.75rem;
-
-    &:hover {
-        filter: brightness(1.2);
-        cursor: pointer;
+export const CustomButton = React.forwardRef(
+    ({ size, inverse, danger, type, onClick, disabled, children }, ref) => {
+        const buttonSizeStyleClass = `button--${size || "default"}`;
+        return (
+            <StyledButton
+                className={`${buttonSizeStyleClass} ${
+                    inverse && "button--inverse"
+                } ${danger && "button--danger"}`}
+                type={type}
+                onClick={onClick}
+                disabled={disabled}
+                ref={ref}
+            >
+                {children}
+            </StyledButton>
+        );
     }
-`;
-
-export const CustomButtonText = styled.span`
-    font-family: ${props => props.theme.font.family.navigation};
-    color: #000000;
-    font-weight: bolder;
-`;
+);
