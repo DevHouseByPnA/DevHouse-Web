@@ -12,6 +12,7 @@ import { CustomText } from "./components/CustomText";
 import { ProfilePage } from "./pages/Profile";
 import { ProjectsPage } from "./pages/Projects";
 import { ProjectsProvider } from "./contexts/projects.context";
+import { ProjectDetailPage } from "./pages/ProjectDetail";
 
 const App = () => {
     const auth = useContext(AuthContext);
@@ -25,6 +26,9 @@ const App = () => {
         <Switch>
             <PrivateRoute exact path={`${NAV_ROUTE.PROJECTS}`}>
                 <ProjectsPage />
+            </PrivateRoute>
+            <PrivateRoute exact path={`${NAV_ROUTE.PROJECTS}/:id`}>
+                <ProjectDetailPage />
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.WORKSPACES}`}>
                 <CustomText.PageTitle>workspaces</CustomText.PageTitle>

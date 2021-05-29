@@ -13,6 +13,7 @@ export const StyledChip = styled.div`
     padding: 0.5rem;
     color: #000;
     background-color: ${props => props.theme.secondary};
+    font-family: ${props => props.theme.font.text};
     border-radius: 1000px;
     display: flex;
     justify-content: center;

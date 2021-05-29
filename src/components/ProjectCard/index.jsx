@@ -5,7 +5,7 @@ import {
 } from "./style";
 import { Card } from "../Card";
 import { Chips } from "../Chips";
-import { CustomButton } from "../Button";
+import { CustomLink } from "../Button";
 import Avatar from "../Avatar";
 
 export const ProjectCard = ({ project }) => {
@@ -29,7 +29,9 @@ export const ProjectCard = ({ project }) => {
             <ProjectCardFooter>
                 <Card.Text>Rating: {project.rating}</Card.Text>
                 <ProjectCardViewBtnContainer>
-                    <CustomButton>VIEW</CustomButton>
+                    <CustomLink to={`/projects/${project._id}`}>
+                        VIEW
+                    </CustomLink>
                 </ProjectCardViewBtnContainer>
             </ProjectCardFooter>
         </Card>
