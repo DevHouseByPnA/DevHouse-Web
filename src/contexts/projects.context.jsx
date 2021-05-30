@@ -27,7 +27,10 @@ export const ProjectsProvider = props => {
         }
 
         try {
-            const response = await API(auth.state.user.token).get(`/projects`);
+            const response = await API(
+                auth.state.user.token,
+                auth.state.user.githubToken
+            ).get(`/projects`);
             console.log(response);
             if (/[2-3]0[0-9]/.test(response.status)) {
                 setProjects(response.data.projects);

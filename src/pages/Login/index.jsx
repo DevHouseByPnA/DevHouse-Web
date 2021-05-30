@@ -11,14 +11,16 @@ export const LoginPage = () => {
 
     const loginWithGithub = async () => {
         try {
-            const { authToken, errorCode, errorMessage } =
+            const { authToken, githubToken, errorCode, errorMessage } =
                 await signInWithGithub();
 
             if (authToken) {
-                // console.log("send create user req");
-                const response = await API(authToken).post(`/users`);
-                // console.log("repsonse: ", response);
-                if (/20[0-9]/.test(response.status) && response.data.user) {
+                console.log("send create user req");
+                const response = await API(authToken, githubToken).post(
+                    `/users`
+                );
+                console.log("repsonse: ", response);
+                if (/[2-3]0[0-9]/.test(response.status) && response.data.user) {
                     console.log(response.data);
                     userProfile.setProfile(response.data.user);
                     toast.success(

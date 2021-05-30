@@ -12,11 +12,14 @@ export const RequestCard = ({ request }) => {
     const userProfile = useContext(UserProfileContext);
     const auth = useContext(AuthContext);
 
+    console.log(request);
+
     const acceptRequest = async () => {
         try {
-            const response = await API(auth.state.user?.token).post(
-                `requests/${request._id}/accept`
-            );
+            const response = await API(
+                auth.state.user?.token,
+                auth.state.user?.githubToken
+            ).post(`requests/${request._id}/accept`);
             console.log(response);
 
             if (/[2-3]0[0-9]/.test(response.status)) {
@@ -29,6 +32,8 @@ export const RequestCard = ({ request }) => {
             console.log(error);
         }
     };
+
+    if (!userProfile.profile) return null;
 
     return (
         <Card>

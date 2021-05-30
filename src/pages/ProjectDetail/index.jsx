@@ -21,9 +21,10 @@ export const ProjectDetailPage = () => {
         const fetchProject = async () => {
             setLoading(true);
             try {
-                const response = await API(auth.state.user?.token).get(
-                    `/projects/${params.id}`
-                );
+                const response = await API(
+                    auth.state.user?.token,
+                    auth.state.user?.githubToken
+                ).get(`/projects/${params.id}`);
                 console.log(response);
                 if (/[2-3]0[0-9]/.test(response.status)) {
                     setProject(response.data.project);
@@ -45,12 +46,12 @@ export const ProjectDetailPage = () => {
 
         setApplying(true);
         try {
-            const response = await API(auth.state.user?.token).post(
-                `/requests`,
-                {
-                    projectId: project._id,
-                }
-            );
+            const response = await API(
+                auth.state.user?.token,
+                auth.state.user?.githubToken
+            ).post(`/requests`, {
+                projectId: project._id,
+            });
 
             console.log(response);
             if (/[2-3]0[0-9]/.test(response.status)) {

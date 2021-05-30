@@ -46,10 +46,10 @@ export const CreateProjectModal = () => {
             githubRepos,
         };
         try {
-            const response = await API(auth.state.user?.token).post(
-                "/projects",
-                data
-            );
+            const response = await API(
+                auth.state.user?.token,
+                auth.state.user?.githubToken
+            ).post("/projects", data);
             console.log(response);
             if (/[2-3]0[0-9]/.test(response.status)) {
                 setProjects(prev => [...prev, response.data.project]);

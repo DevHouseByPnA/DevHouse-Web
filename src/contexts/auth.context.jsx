@@ -75,6 +75,7 @@ export const AuthProvider = props => {
             name: user.displayName || "",
             email: user.email || "",
             token: idTokenResult.token,
+            githubToken: localStorage.getItem("githubToken"),
         });
 
         setLoading(false);

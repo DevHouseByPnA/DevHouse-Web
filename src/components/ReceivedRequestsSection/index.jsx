@@ -13,12 +13,14 @@ export const ReceivedRequestsSection = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await API(auth.state.user?.token).get(
-                    `/requests/received`
-                );
-                console.log(response);
+                const response = await API(
+                    auth.state.user?.token,
+                    auth.state.user?.githubToken
+                ).get(`/requests/received`);
+                console.log(response.data.requests);
                 if (/[2-3]0[0-9]/.test(response.status)) {
-                    setRequests(response.data.requests);
+                    setRequests([...response.data.requests]);
+                    console.log("Received: ", [...response.data.requests]);
                 }
             } catch (error) {
                 console.log(error);
@@ -27,8 +29,9 @@ export const ReceivedRequestsSection = () => {
         };
 
         fetchRequests();
-    }, [auth.state.user?.token]);
+    }, [auth.state.user]);
 
+    if (!auth.state.user) return null;
     return (
         <StyledContainer>
             <Card.Title>Received</Card.Title>

@@ -25,9 +25,10 @@ export const UserProfileProvider = props => {
         }
 
         try {
-            const response = await API(auth.state.user.token).get(
-                `/users/profile`
-            );
+            const response = await API(
+                auth.state.user.token,
+                auth.state.user.githubToken
+            ).get(`/users/profile`);
 
             if (/20[0-9]/.test(response.status)) {
                 setUserProfile(response.data.user);
