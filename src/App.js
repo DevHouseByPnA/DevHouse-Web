@@ -14,6 +14,8 @@ import { ProjectsPage } from "./pages/Projects";
 import { ProjectsProvider } from "./contexts/projects.context";
 import { ProjectDetailPage } from "./pages/ProjectDetail";
 import { RequestsPage } from "./pages/Requests";
+import { WorkspacesPage } from "./pages/Workspaces";
+import { WorkspaceDetailPage } from "./pages/WorkspaceDetail";
 
 const App = () => {
     const auth = useContext(AuthContext);
@@ -32,7 +34,10 @@ const App = () => {
                 <ProjectDetailPage />
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.WORKSPACES}`}>
-                <CustomText.PageTitle>workspaces</CustomText.PageTitle>
+                <WorkspacesPage />
+            </PrivateRoute>
+            <PrivateRoute exact path={`${NAV_ROUTE.WORKSPACES}/:id`}>
+                <WorkspaceDetailPage />
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.REQUESTS}`}>
                 <RequestsPage />
