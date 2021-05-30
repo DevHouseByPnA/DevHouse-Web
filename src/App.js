@@ -16,6 +16,7 @@ import { ProjectDetailPage } from "./pages/ProjectDetail";
 import { RequestsPage } from "./pages/Requests";
 import { WorkspacesPage } from "./pages/Workspaces";
 import { WorkspaceDetailPage } from "./pages/WorkspaceDetail";
+import { WorkspaceCommitsPage } from "./pages/WorkspaceCommits";
 
 const App = () => {
     const auth = useContext(AuthContext);
@@ -38,6 +39,9 @@ const App = () => {
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.WORKSPACES}/:id`}>
                 <WorkspaceDetailPage />
+            </PrivateRoute>
+            <PrivateRoute exact path={`${NAV_ROUTE.WORKSPACES}/:id/commits`}>
+                <WorkspaceCommitsPage />
             </PrivateRoute>
             <PrivateRoute exact path={`${NAV_ROUTE.REQUESTS}`}>
                 <RequestsPage />

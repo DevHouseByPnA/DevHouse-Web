@@ -45,6 +45,7 @@ export const CreateProjectModal = () => {
             requiredSkills: skills,
             githubRepos,
         };
+
         try {
             const response = await API(
                 auth.state.user?.token,
