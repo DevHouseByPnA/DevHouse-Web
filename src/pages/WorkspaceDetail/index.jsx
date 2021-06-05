@@ -10,7 +10,7 @@ import { AuthContext } from "contexts/auth.context";
 import { NAV_ROUTE } from "navigation/navRoutes";
 
 export const WorkspaceDetailPage = () => {
-    const [workspace, setWorkspace] = useState([]);
+    const [workspace, setWorkspace] = useState();
     const { id: workspaceId } = useParams();
     const auth = useContext(AuthContext);
 
