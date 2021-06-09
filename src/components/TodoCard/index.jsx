@@ -2,7 +2,7 @@ import { StatusIndicator } from "./style";
 import { Card } from "../Card";
 import { TodoMenu } from "./TodoMenu";
 
-export const TodoCard = ({ description, status, todoId }) => {
+export const TodoCard = ({ description, status, todoId, lastUpdated }) => {
     return (
         <Card>
             <Card.Row>
@@ -11,6 +11,9 @@ export const TodoCard = ({ description, status, todoId }) => {
                 <TodoMenu todoId={todoId} status={status} />
             </Card.Row>
             <Card.Text>{description}</Card.Text>
+            <Card.SubTitle>
+                Last Updated: {new Date(lastUpdated).toLocaleString()}
+            </Card.SubTitle>
         </Card>
     );
 };

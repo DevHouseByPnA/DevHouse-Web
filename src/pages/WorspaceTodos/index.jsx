@@ -65,15 +65,26 @@ export const WorspaceTodosPage = () => {
         return null;
     }
 
-    const renderTodos = todos => {
-        return todos.map(todo => (
-            <TodoCard
-                key={todo._id}
-                todoId={todo._id}
-                description={todo.description}
-                status={todo.status}
-            />
-        ));
+    const renderTodos = (todos = []) => {
+        return todos
+            .sort((t1, t2) => {
+                if (new Date(t1.updatedAt) < new Date(t2.updatedAt)) {
+                    return 1;
+                } else if (new Date(t1.updatedAt) > new Date(t2.updatedAt)) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            })
+            .map(todo => (
+                <TodoCard
+                    key={todo._id}
+                    todoId={todo._id}
+                    description={todo.description}
+                    status={todo.status}
+                    lastUpdated={todo.updatedAt}
+                />
+            ));
     };
 
     return (

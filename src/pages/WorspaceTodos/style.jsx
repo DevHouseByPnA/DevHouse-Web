@@ -39,9 +39,9 @@ export const StyledTodoContainer = styled.div`
 
     @media only screen and (min-width: ${ScreenSize.LARGE_SCREEN.min}) {
         grid-template-columns: repeat(1, minmax(15rem, 1fr));
-        grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(10rem, 1fr));
         grid-auto-flow: row;
-        grid-auto-rows: minmax(5rem, 1fr);
+        grid-auto-rows: minmax(10rem, 1fr);
         width: 100%;
     }
 
