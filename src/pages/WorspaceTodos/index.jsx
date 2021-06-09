@@ -5,8 +5,8 @@ import { StyledContainer, StyledContent } from "./style";
 import { AuthContext } from "../../contexts/auth.context";
 import { CustomText } from "../../components/CustomText";
 import { API } from "../../utils/api";
-import { Card } from "../../components/Card";
 import { CreateTodoModal } from "../../components/CreateTodoModal";
+import { TodoCard } from "../../components/TodoCard";
 
 export const WorspaceTodosPage = () => {
     const [workspace, setWorkspace] = useState();
@@ -74,10 +74,12 @@ export const WorspaceTodosPage = () => {
                     }}
                 />
                 {todolist.map(todo => (
-                    <Card>
-                        <Card.Text>{todo.description}</Card.Text>
-                        <Card.SubTitle>{todo.status}</Card.SubTitle>
-                    </Card>
+                    <TodoCard
+                        key={todo._id}
+                        todoId={todo._id}
+                        description={todo.description}
+                        status={todo.status}
+                    />
                 ))}
             </StyledContent>
         </StyledContainer>

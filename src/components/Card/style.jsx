@@ -44,5 +44,5 @@ export const StyledCardRow = styled.div`
     justify-content: ${props => (props.flexEnd ? "flex-end" : "flex-start")};
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem;
+    padding: 0.5rem 0;
 `;
