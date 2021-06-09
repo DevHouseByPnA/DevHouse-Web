@@ -1,12 +1,13 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { StyledContainer, StyledContent } from "./style";
+import { StyledContainer, StyledContent, StyledTodoContainer } from "./style";
 import { AuthContext } from "../../contexts/auth.context";
 import { CustomText } from "../../components/CustomText";
 import { API } from "../../utils/api";
 import { CreateTodoModal } from "../../components/CreateTodoModal";
 import { TodoCard } from "../../components/TodoCard";
+import { Card } from "../../components/Card";
 
 export const WorspaceTodosPage = () => {
     const [workspace, setWorkspace] = useState();
@@ -64,6 +65,17 @@ export const WorspaceTodosPage = () => {
         return null;
     }
 
+    const renderTodos = todos => {
+        return todos.map(todo => (
+            <TodoCard
+                key={todo._id}
+                todoId={todo._id}
+                description={todo.description}
+                status={todo.status}
+            />
+        ));
+    };
+
     return (
         <StyledContainer>
             <CustomText.PageTitle>{workspace.name} Todos</CustomText.PageTitle>
@@ -73,14 +85,30 @@ export const WorspaceTodosPage = () => {
                         setTodolist(prev => [...prev, todo]);
                     }}
                 />
-                {todolist.map(todo => (
-                    <TodoCard
-                        key={todo._id}
-                        todoId={todo._id}
-                        description={todo.description}
-                        status={todo.status}
-                    />
-                ))}
+                <StyledTodoContainer>
+                    <div className="section-title">
+                        <Card.Text>Planned</Card.Text>
+                    </div>
+                    {renderTodos(
+                        todolist.filter(todo => todo.status === "planned")
+                    )}
+                </StyledTodoContainer>
+                <StyledTodoContainer>
+                    <div className="section-title">
+                        <Card.Text>OnGoing</Card.Text>
+                    </div>
+                    {renderTodos(
+                        todolist.filter(todo => todo.status === "ongoing")
+                    )}
+                </StyledTodoContainer>
+                <StyledTodoContainer>
+                    <div className="section-title">
+                        <Card.Text>Done</Card.Text>
+                    </div>
+                    {renderTodos(
+                        todolist.filter(todo => todo.status === "done")
+                    )}
+                </StyledTodoContainer>
             </StyledContent>
         </StyledContainer>
     );
